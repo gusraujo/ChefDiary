@@ -1,0 +1,35 @@
+@startuml
+entity "Recipe" as Recipe {
+  * id : UUID
+  --
+  name : String
+  prep_time : Number
+  category : String
+  tags : List<String>
+}
+
+entity "Ingredient" as Ingredient {
+  * id : UUID
+  --
+  recipe_id : UUID
+  name : String
+  type : String
+  amount : Number
+  unit : String
+  tags : List<String>
+}
+
+entity "Note" as Note {
+  * id : UUID
+  --
+  recipe_id : UUID
+  date : Date
+  comment : String
+  difficulty : Number
+  result : Number
+  time_spent : Number
+}
+
+Recipe ||--o{ Ingredient : "has"
+Recipe ||--o{ Note : "has"
+@enduml
