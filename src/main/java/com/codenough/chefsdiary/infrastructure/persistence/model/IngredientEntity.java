@@ -1,6 +1,7 @@
 package com.codenough.chefsdiary.infrastructure.persistence.model;
 
 
+import com.codenough.chefsdiary.core.entity.enums.IngredientType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,11 +24,11 @@ public class IngredientEntity {
     private String name;
 
     @Field(name = "type")
-    private String type;
+    private IngredientType type;
 
     @Field(name = "amount")
     private String amount;
 
     @Field(name = "unit")
-    private String unit;
+    private Integer unit;
 }

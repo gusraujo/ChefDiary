@@ -1,14 +1,13 @@
 package com.codenough.chefsdiary.infrastructure.persistence.model;
 
-import jakarta.persistence.*;
+import com.codenough.chefsdiary.core.entity.enums.MealCategory;
+import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.math.BigDecimal;
 import java.util.Set;
-
-import static jakarta.persistence.CascadeType.ALL;
-import static jakarta.persistence.FetchType.LAZY;
 
 @Getter
 @Builder
@@ -24,11 +23,14 @@ public class RecipeEntity {
     private String name;
 
     @Field(name = "prep_time")
-    private Double preparationTime;
+    private BigDecimal preparationTime;
 
     @Field(name = "category")
-    private String category;
+    private MealCategory category;
 
     // Embedding the IngredientEntity documents directly within the RecipeEntity document
     private Set<IngredientEntity> ingredients;
+
+    @Field(name = "steps")
+    private Set<String> steps;
 }
